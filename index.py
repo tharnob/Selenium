@@ -35,14 +35,32 @@ class DemoGetAttributeValue():
     def demo_getValue(self):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.get("https://www.yatra.com/")
-        attr_value = driver.find_element(By.XPATH, "//div[@class='ripple-parent search-height demo-icon icon-go']//input[@id='BE_flight_flsearch_btn']").get_attribute("value")
+        attr_value = driver.find_element(By.XPATH, "//div[@class='ripple-parent search-height demo-icon icon-go']//input[@id='BE_flight_flsearch_btn']").get_attribute("class")
 
         print(attr_value)
         time.sleep(2)
 
 
-getAttrValue = DemoGetAttributeValue()
-getAttrValue.demo_getValue()
+
+
+class DemoElementState():
+
+    def demo_enable_disable(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://training.openspan.com/login")
+        driver.find_element(By.ID, "user_name").send_keys("tharnob")
+        driver.find_element(By.ID, "user_pass").send_keys("1234")
+        demo_state = driver.find_element(By.ID, "login_button").is_enabled()
+
+        print(demo_state)
+        time.sleep(2)
+
+demoState = DemoElementState()
+demoState.demo_enable_disable()
+
+
+# getAttrValue = DemoGetAttributeValue()
+# getAttrValue.demo_getValue()
 
 
 # getText = DemoGetText()
