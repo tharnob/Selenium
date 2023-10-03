@@ -30,8 +30,19 @@ class DemoGetText():
         print(text1)
         time.sleep(2)
 
+class DemoGetAttributeValue():
+
+    def demo_getValue(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.yatra.com/")
+        attr_value = driver.find_element(By.XPATH, "//div[@class='ripple-parent search-height demo-icon icon-go']//input[@id='BE_flight_flsearch_btn']").get_attribute("value")
+
+        print(attr_value)
+        time.sleep(2)
 
 
+getAttrValue = DemoGetAttributeValue()
+getAttrValue.demo_getValue()
 
 
 # getText = DemoGetText()
