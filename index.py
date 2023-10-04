@@ -85,20 +85,29 @@ class DemoHiddenElements():
 
 
 
+class CheckBoxes():
+    def demo_checkBox(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.ironspider.ca/forms/checkradio.htm")
+        driver.find_element(By.XPATH, "//input[@value='red']").click()
+        driver.find_element(By.XPATH, "//input[@value='blue']").click()
+        var1 = driver.find_element(By.XPATH, "//input[@value='blue']").is_selected()
+        var2 = driver.find_element(By.XPATH, "//input[@value='yellow']").is_selected()
+        driver.maximize_window()
+        print(var1)
+        print(var2)
+        time.sleep(2)
 
-demoDisplayed = DemoHiddenElements()
+
+checkbox = CheckBoxes()
+checkbox.demo_checkBox()
+
+
+
+
+# demoDisplayed = DemoHiddenElements()
 # demoDisplayed.demo_is_displayed()
-demoDisplayed.demo_is_displayed_yatra()
-
-
-
-
-
-
-
-
-
-
+# demoDisplayed.demo_is_displayed_yatra()
 
 
 # demoState = DemoElementState()
