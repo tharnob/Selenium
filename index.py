@@ -43,20 +43,66 @@ class DemoGetAttributeValue():
 
 
 
-class DemoElementState():
+class DemoHiddenElements():
 
-    def demo_enable_disable(self):
+    def demo_is_displayed(self):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-        driver.get("https://training.openspan.com/login")
-        driver.find_element(By.ID, "user_name").send_keys("tharnob")
-        driver.find_element(By.ID, "user_pass").send_keys("1234")
-        demo_state = driver.find_element(By.ID, "login_button").is_enabled()
+        driver.get("https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp")
+        elem = driver.find_element(By.XPATH, "//div[@id='myDIV']").is_displayed()
+        print(elem)
+        time.sleep(2)
+        driver.find_element(By.XPATH, "//button[normalize-space()='Toggle Hide and Show']").click()
 
-        print(demo_state)
+        elem1 = driver.find_element(By.XPATH, "//div[@id='myDIV']").is_displayed()
+        print(elem1)
+
+
+    def demo_is_displayed_yatra(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.yatra.com/hotels")
+        driver.find_element(By.XPATH, "//i[@class='icon icon-angle-right arrowpassengerBox']").click()
+
+        driver.find_element(By.XPATH, "//div[@class='hotel_passengerBox dflex relative']//div[3]//div[1]//div[1]//span[2]").click()
+        elem = driver.find_element(By.XPATH, "//select[@class='ageselect']").is_displayed()
+
+        time.sleep(2)
+        print(elem)
+
+        driver.find_element(By.XPATH, "//div[@class='hotel_passengerBox dflex relative']//div[3]//div[1]//div[1]//span[1]").click()
+
+
+        try:
+            elem1 = driver.find_element(By.XPATH, "//select[@class='ageselect']").is_displayed()
+
+        except:
+            print("No such Element!")
+
+        else:
+            print(elem1)
         time.sleep(2)
 
-demoState = DemoElementState()
-demoState.demo_enable_disable()
+
+
+
+
+
+demoDisplayed = DemoHiddenElements()
+# demoDisplayed.demo_is_displayed()
+demoDisplayed.demo_is_displayed_yatra()
+
+
+
+
+
+
+
+
+
+
+
+
+# demoState = DemoElementState()
+# demoState.demo_enable_disable()
 
 
 # getAttrValue = DemoGetAttributeValue()
