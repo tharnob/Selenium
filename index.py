@@ -5,7 +5,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
 
-
 class DemoByClass():
     def locate_by_demo(self):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -14,33 +13,33 @@ class DemoByClass():
         time.sleep(4)
 
 
-
 class DemoGetText():
 
     def getTheText(self):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.get("https://www.yatra.com/")
-        text = driver.find_element(By.XPATH, "//body/div[@class='theme-snipe']/div[@id='themeSnipe']/section[@class='wrapper']/div[@class='right_data']/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/a[2]/div[1]").text
+        text = driver.find_element(By.XPATH,
+                                   "//body/div[@class='theme-snipe']/div[@id='themeSnipe']/section[@class='wrapper']/div[@class='right_data']/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/a[2]/div[1]").text
 
-        text1 = driver.find_element(By.XPATH, "//h1[contains(text(),'Book Flights, Hotels, Trains, Buses, Cruise and Ho')]").text
-
-
+        text1 = driver.find_element(By.XPATH,
+                                    "//h1[contains(text(),'Book Flights, Hotels, Trains, Buses, Cruise and Ho')]").text
 
         print(text)
         print(text1)
         time.sleep(2)
+
 
 class DemoGetAttributeValue():
 
     def demo_getValue(self):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.get("https://www.yatra.com/")
-        attr_value = driver.find_element(By.XPATH, "//div[@class='ripple-parent search-height demo-icon icon-go']//input[@id='BE_flight_flsearch_btn']").get_attribute("class")
+        attr_value = driver.find_element(By.XPATH,
+                                         "//div[@class='ripple-parent search-height demo-icon icon-go']//input[@id='BE_flight_flsearch_btn']").get_attribute(
+            "class")
 
         print(attr_value)
         time.sleep(2)
-
-
 
 
 class DemoHiddenElements():
@@ -56,20 +55,20 @@ class DemoHiddenElements():
         elem1 = driver.find_element(By.XPATH, "//div[@id='myDIV']").is_displayed()
         print(elem1)
 
-
     def demo_is_displayed_yatra(self):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.get("https://www.yatra.com/hotels")
         driver.find_element(By.XPATH, "//i[@class='icon icon-angle-right arrowpassengerBox']").click()
 
-        driver.find_element(By.XPATH, "//div[@class='hotel_passengerBox dflex relative']//div[3]//div[1]//div[1]//span[2]").click()
+        driver.find_element(By.XPATH,
+                            "//div[@class='hotel_passengerBox dflex relative']//div[3]//div[1]//div[1]//span[2]").click()
         elem = driver.find_element(By.XPATH, "//select[@class='ageselect']").is_displayed()
 
         time.sleep(2)
         print(elem)
 
-        driver.find_element(By.XPATH, "//div[@class='hotel_passengerBox dflex relative']//div[3]//div[1]//div[1]//span[1]").click()
-
+        driver.find_element(By.XPATH,
+                            "//div[@class='hotel_passengerBox dflex relative']//div[3]//div[1]//div[1]//span[1]").click()
 
         try:
             elem1 = driver.find_element(By.XPATH, "//select[@class='ageselect']").is_displayed()
@@ -80,9 +79,6 @@ class DemoHiddenElements():
         else:
             print(elem1)
         time.sleep(2)
-
-
-
 
 
 class CheckBoxes():
@@ -99,10 +95,26 @@ class CheckBoxes():
         time.sleep(2)
 
 
-checkbox = CheckBoxes()
-checkbox.demo_checkBox()
+class DemoRadio:
+    def demo_radio_button(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.ironspider.ca/forms/checkradio.htm")
+        time.sleep(2)
+        var1 = driver.find_element(By.XPATH,
+                                   "//form[contains(text(),'Your current web browser is:')]//input[2]").is_selected()
+        driver.find_element(By.XPATH, "//form[contains(text(),'Your current web browser is:')]//input[2]").click()
+        var2 = driver.find_element(By.XPATH,
+                                   "//form[contains(text(),'Your current web browser is:')]//input[2]").is_selected()
+
+        print(var1, var2)
+        time.sleep(4)
 
 
+radioDemo = DemoRadio()
+radioDemo.demo_radio_button()
+
+# checkbox = CheckBoxes()
+# checkbox.demo_checkBox()
 
 
 # demoDisplayed = DemoHiddenElements()
@@ -122,9 +134,5 @@ checkbox.demo_checkBox()
 # getText.getTheText()
 
 
-
 # findById = DemoByClass()
 # findById.locate_by_demo()
-
-
-
