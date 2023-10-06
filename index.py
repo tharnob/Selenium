@@ -127,10 +127,70 @@ class DemoDropdown:
         time.sleep(4)
 
 
-ddDemo = DemoDropdown()
-ddDemo.demo_dropdown()
+# To run the below code, I took a multidropdown code from w3 school and then run it on vscode on my local machine
 
 
+# SOURCE CODE:
+
+# <!DOCTYPE html>
+# <html>
+# <body>
+#
+# <h1>The select multiple attribute</h1>
+#
+# <p>The multiple attribute specifies that multiple options can be selected at once:</p>
+#
+# <form action="/action_page.php">
+#   <label for="cars">Choose a car:</label>
+#   <select name="cars" id="cars" multiple>
+#     <option value="volvo">Volvo</option>
+#     <option value="saab">Saab</option>
+#     <option value="opel">Opel</option>
+#     <option value="audi">Audi</option>
+#   </select>
+#   <br><br>
+#   <input type="submit" value="Submit">
+# </form>
+#
+# <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
+#
+# </body>
+# </html>
+
+class DemoDropDownMultiSelect:
+    def demo_dropdown_multiSelect(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("http://127.0.0.1:5500/index.html")
+        multiDropdown = driver.find_element(By.NAME, "cars")
+        dd_multi = Select(multiDropdown)
+
+        time.sleep(2)
+        dd_multi.select_by_index(0)
+        time.sleep(2)
+        dd_multi.select_by_value("saab")
+        time.sleep(2)
+        dd_multi.select_by_visible_text("Audi")
+        time.sleep(2)
+        dd_multi.deselect_by_visible_text("Saab")
+        time.sleep(2)
+        dd_multi.deselect_by_value("audi")
+        time.sleep(4)
+
+
+
+multiSelect = DemoDropDownMultiSelect()
+multiSelect.demo_dropdown_multiSelect()
+
+
+
+
+
+
+
+
+
+# ddDemo = DemoDropdown()
+# ddDemo.demo_dropdown()
 
 
 # radioDemo = DemoRadio()
