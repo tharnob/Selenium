@@ -234,10 +234,23 @@ class DemoAutoSuggest:
 
 
 
+
+class DemoScreenshot:
+    def demo_screen_capture(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://secure.yatra.com/social/common/yatra/signin.htm")
+        demoContinue = driver.find_element(By.XPATH, "//button[@id='login-continue-btn']")
+        demoContinue.screenshot(".\\SCREENSHOT\\test1.png")
+        demoContinue.click()
+        time.sleep(2)
+        driver.get_screenshot_as_file(".\\SCREENSHOT\\error.png")
+        driver.save_screenshot(".\\SCREENSHOT\\test2.png")
+
+screenShot = DemoScreenshot()
+screenShot.demo_screen_capture()
         
-        
-d_auto = DemoAutoSuggest()
-d_auto.demo_auto_suggest()
+# d_auto = DemoAutoSuggest()
+# d_auto.demo_auto_suggest()
 
 
 # multiSelect = DemoDropDownMultiSelect()
