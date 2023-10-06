@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 
 class DemoByClass():
@@ -110,8 +111,30 @@ class DemoRadio:
         time.sleep(4)
 
 
-radioDemo = DemoRadio()
-radioDemo.demo_radio_button()
+
+class DemoDropdown:
+    def demo_dropdown(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.salesforce.com/au/form/signup/freetrial-sales/")
+        dropdown = driver.find_element(By.NAME, "UserTitle")
+        dd = Select(dropdown)
+        time.sleep(2)
+        dd.select_by_index(1)
+        time.sleep(2)
+        dd.select_by_value("CxO_General_Manager_ANZ")
+        time.sleep(2)
+        dd.select_by_visible_text("Marketing / PR Manager")
+        time.sleep(4)
+
+
+ddDemo = DemoDropdown()
+ddDemo.demo_dropdown()
+
+
+
+
+# radioDemo = DemoRadio()
+# radioDemo.demo_radio_button()
 
 # checkbox = CheckBoxes()
 # checkbox.demo_checkBox()
