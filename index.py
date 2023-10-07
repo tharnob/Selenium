@@ -258,13 +258,18 @@ class DemoJs:
         demo_element = driver.execute_script("return document.getElementsByTagName('a')[8];")
         driver.execute_script("arguments[0].click();", demo_element)
 
-demojs = DemoJs()
-demojs.demo_JavaScript()
 
 
 
 
 
+
+
+
+
+
+# demojs = DemoJs()
+# demojs.demo_JavaScript()
 
 
 # screenShot = DemoScreenshot()
