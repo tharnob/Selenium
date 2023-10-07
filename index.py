@@ -246,8 +246,29 @@ class DemoScreenshot:
         driver.get_screenshot_as_file(".\\SCREENSHOT\\error.png")
         driver.save_screenshot(".\\SCREENSHOT\\test2.png")
 
-screenShot = DemoScreenshot()
-screenShot.demo_screen_capture()
+
+
+
+class DemoJs:
+    def demo_JavaScript(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        # driver.get("https://training.rcvacademy.com/")
+        driver.execute_script("window.open('https://training.rcvacademy.com/', '_self');")
+        time.sleep(8)
+        demo_element = driver.execute_script("return document.getElementsByTagName('a')[8];")
+        driver.execute_script("arguments[0].click();", demo_element)
+
+demojs = DemoJs()
+demojs.demo_JavaScript()
+
+
+
+
+
+
+
+# screenShot = DemoScreenshot()
+# screenShot.demo_screen_capture()
         
 # d_auto = DemoAutoSuggest()
 # d_auto.demo_auto_suggest()
