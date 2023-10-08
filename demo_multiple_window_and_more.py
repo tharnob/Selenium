@@ -1,6 +1,6 @@
 import time
 from selenium import webdriver
-from selenium.webdriver import Keys
+from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.alert import Alert
 from webdriver_manager.chrome import ChromeDriverManager
@@ -101,15 +101,36 @@ class DemoJsPopup:
         time.sleep(2)
 
 
-jsAlerts = DemoJsPopup()
-jsAlerts.demo_js_alerts()
+# ACTION CHAIN CLASS IS USED FOR MOUSE HOVER
+
+class DemoMouseHover:
+    def demo_mouse_hover(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.yatra.com/")
+        driver.maximize_window()
+        moreButton = driver.find_element(By.XPATH, "//span[@class='more-arr']")
+
+        myAccountLink = driver.find_element(By.XPATH, "//a[contains(text(),'My Account')]")
+
+        aChains = ActionChains(driver)
+        aChains.move_to_element(myAccountLink).perform()
+        time.sleep(4)
+
+        aChains.move_to_element(moreButton).perform()
+        time.sleep(4)
+        driver.find_element(By.XPATH, "//span[normalize-space()='Xplore']").click()
+        time.sleep(4)
+
+
+mouseHover = DemoMouseHover()
+mouseHover.demo_mouse_hover()
 
 
 
 
 
-
-
+# jsAlerts = DemoJsPopup()
+# jsAlerts.demo_js_alerts()
 
 
 # demoFrame = DemoIframe()
