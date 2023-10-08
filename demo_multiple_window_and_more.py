@@ -122,11 +122,47 @@ class DemoMouseHover:
         time.sleep(4)
 
 
-mouseHover = DemoMouseHover()
-mouseHover.demo_mouse_hover()
 
 
 
+class DemoRightDoubleClick:
+    def demo_right_doubleClick(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://demo.guru99.com/test/simple_context_menu.html")
+        driver.maximize_window()
+
+        # RIGHT CLICK
+
+        # aChains = ActionChains(driver)
+        # elem1 = driver.find_element(By.XPATH, "//span[@class='context-menu-one btn btn-neutral']")
+        # copyElem = driver.find_element(By.XPATH, "//span[normalize-space()='Copy']")
+        # aChains.context_click(elem1).perform()
+        # time.sleep(4)
+        # copyElem.click()
+        # time.sleep(4)
+
+        # DOUBLE CLICK
+
+        # driver.get("https://demo.guru99.com/test/simple_context_menu.html")
+        # driver.maximize_window()
+
+        aChains1 = ActionChains(driver)
+        elem2 = driver.find_element(By.XPATH, "//button[normalize-space()='Double-Click Me To See Alert']")
+
+        aChains1.double_click(elem2).perform()
+        time.sleep(4)
+
+rightDoubleClick = DemoRightDoubleClick()
+rightDoubleClick.demo_right_doubleClick()
+
+
+
+
+
+
+
+# mouseHover = DemoMouseHover()
+# mouseHover.demo_mouse_hover()
 
 
 # jsAlerts = DemoJsPopup()
