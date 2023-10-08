@@ -35,5 +35,43 @@ class DemoMultipleWindows():
         driver.find_element(By.XPATH, "//img[@alt='Flat 12% OFF (upto Rs. 1,500)']").click()
         time.sleep(5)
 
-demoMultipleWindows = DemoMultipleWindows()
-demoMultipleWindows.locate_windows()
+
+
+
+
+
+class DemoIframe:
+    def demo_frame(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe_frameborder_css")
+        driver.maximize_window()
+        # Switch with Iframe locator
+        # By XPATH
+        # driver.switch_to.frame(driver.find_element(By.XPATH, "//iframe[@id='iframeResult']"))
+
+        # By ID
+        # driver.switch_to.frame("iframeResult")
+
+        # By Name
+
+        driver.switch_to.frame("iframeResult")
+
+        # Switch with index
+        driver.switch_to.frame(0)
+        driver.find_element(By.XPATH, "//a[normalize-space()='Log in']").click()
+        time.sleep(24)
+
+
+demoFrame = DemoIframe()
+demoFrame.demo_frame()
+
+
+
+
+
+
+
+
+
+# demoMultipleWindows = DemoMultipleWindows()
+# demoMultipleWindows.locate_windows()
