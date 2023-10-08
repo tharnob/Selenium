@@ -187,14 +187,32 @@ class DemoSliders:
 
 
 
+class DemoDragAndDrop:
+    def demo_drag_drop(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://jqueryui.com/droppable/")
+        driver.switch_to.frame(driver.find_element(By.XPATH, "//iframe[@class='demo-frame']"))
+        elem1 = driver.find_element(By.XPATH, "//div[@id='draggable']")
+        elem2 = driver.find_element(By.XPATH, "//div[@id='droppable']")
+
+        # time.sleep(4)
+        # ActionChains(driver).drag_and_drop(elem1, elem2).perform()
+        # time.sleep(4)
 
 
-sliders = DemoSliders()
-sliders.demo_sliders()
+        time.sleep(4)
+        ActionChains(driver).drag_and_drop_by_offset(elem1, 160, 30).perform()
+        time.sleep(4)
+
+
+dragAndDrop = DemoDragAndDrop()
+dragAndDrop.demo_drag_drop()
 
 
 
 
+# sliders = DemoSliders()
+# sliders.demo_sliders()
 
 
 # rightDoubleClick = DemoRightDoubleClick()
