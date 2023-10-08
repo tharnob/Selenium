@@ -152,13 +152,53 @@ class DemoRightDoubleClick:
         aChains1.double_click(elem2).perform()
         time.sleep(4)
 
-rightDoubleClick = DemoRightDoubleClick()
-rightDoubleClick.demo_right_doubleClick()
+
+
+
+class DemoSliders:
+    def demo_sliders(self):
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver.get("https://codepen.io/jackiejohnston/pen/NNrpjQ")
+        driver.switch_to.frame("result")
+        elem1 = driver.find_element(By.CLASS_NAME, "noUi-handle-lower")
+        elem2 = driver.find_element(By.CLASS_NAME, "noUi-handle-upper")
+
+
+        # MULTIPLE WAYS -> FIRST WAY
+        # time.sleep(4)
+        # ActionChains(driver).drag_and_drop_by_offset(elem1, 60, 0).perform()
+        # time.sleep(4)
+
+        # IF FIRST NOT WORKS -> SECOND WAY
+
+        # time.sleep(4)
+        # ActionChains(driver).click_and_hold(elem1).pause(1).move_by_offset(50, 0).release().perform()
+        # time.sleep(4)
+
+        # IF THIS DON'T WORK TOO -> THIRD WAY (FOR SYNCHRONIZATION ISSUES)
+
+        time.sleep(4)
+        ActionChains(driver).move_to_element(elem1).pause(1).click_and_hold(elem1).move_by_offset(80, 0).release().perform()
+        time.sleep(4)
+
+        ActionChains(driver).drag_and_drop_by_offset(elem2, -60, 0).perform()
+        time.sleep(4)
 
 
 
 
 
+
+sliders = DemoSliders()
+sliders.demo_sliders()
+
+
+
+
+
+
+# rightDoubleClick = DemoRightDoubleClick()
+# rightDoubleClick.demo_right_doubleClick()
 
 
 # mouseHover = DemoMouseHover()
