@@ -205,10 +205,14 @@ class DemoDragAndDrop:
         time.sleep(4)
 
 
-dragAndDrop = DemoDragAndDrop()
-dragAndDrop.demo_drag_drop()
 
 
+
+
+
+
+# dragAndDrop = DemoDragAndDrop()
+# dragAndDrop.demo_drag_drop()
 
 
 # sliders = DemoSliders()
